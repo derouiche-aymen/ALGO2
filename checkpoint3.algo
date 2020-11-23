@@ -1,0 +1,78 @@
+PROCEDURE dot_product(var v1,v2 : ARRAY_OF FLOAT[3])
+VAR
+    i : INTEGER;
+    ps : FLOAT;
+BEGIN
+    ps:=0;
+    FOR i FROM 0 TO 2 STEP 1  DO
+        ps := ps + (v1[i]*v2[i]); 
+
+    END_FOR
+    IF (result=0) THEN
+        Write('Orthogonal');
+    ELSE
+        Write('Not Orthogonal');
+    END_IF
+END
+
+ALGORITHM checkpoint3
+VAR
+    v1,v2:ARRAY_OF FLOAT[3];
+    n,i,j:INTEGER;
+BEGIN
+    write('number of pairs');
+    read(n);
+    FOR i FROM 0 TO n-1 STEP 1 DO
+        FOR j FROM 0 TO 2 STEP 1  DO
+            write ('Give us the ',j+1,'elements of the first vector');
+            read (v1[j]);
+        END_FOR
+        FOR j FROM 0 TO 2 STEP 1  DO
+            write ('Give us the ',j+1,'elements of the second vector');
+            read (v2[j]);
+        END_FOR
+        dot_product (v1,v2)
+    END_FOR
+END
+
+//------------------------------------      ALGORITHM    FUNCTION    -----------------------------------------------------------
+
+FUNCTION dot_product (var v1,v2 : ARRAY_OF FLOAT[3])
+
+    i : INTEGER;
+    ps : FLOAT;
+BEGIN
+    ps:=0;
+    FOR i FROM 0 TO 2 STEP 1  DO
+        ps := ps + (v1[i]*v2[i]); 
+    END_FOR
+        RETURN ps ;
+        
+END
+
+ALGORITHM checkpoint3
+VAR
+    n,i,j:INTEGER;
+    x: FLOAT;
+    v1,v2:ARRAY_OF FLOAT[3];
+BEGIN
+    write('number of pairs');
+    read(n)
+    FOR i FROM 0 TO n-1 STEP 1 DO
+        FOR j FROM 0 TO 2 STEP 1  DO
+            write ('Give us the ',j+1,'elements of the first vector');
+            read (v1[j]);
+        END_FOR
+        FOR j FROM 0 TO 2 STEP 1  DO
+            write ('Give us the ',j+1,'elements of the second vector');
+            read (v2[j]);
+        END_FOR
+        x:=dot_product(v1,v2);
+        IF (x=0) THEN
+        Write('Orthogonal');
+        ELSE
+        Write('Not Orthogonal');
+    END_IF
+        
+    END_FOR
+END
